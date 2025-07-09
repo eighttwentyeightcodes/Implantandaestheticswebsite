@@ -1,37 +1,33 @@
 import React from 'react';
+import dentalCareIcon from '@/assets/dentalcareicon.png';
+import implantIcon from '@/assets/implanticon.png';
+import specializedTreatmentIcon from '@/assets/specializedtreatment.png';
 
 const serviceCategories = [
   {
-    title: 'Preventive Dental Services',
-    services: ['Routine dental check-ups', 'Professional teeth cleaning', 'Fluoride treatments', 'Dental sealants', 'Digital X-rays and imaging'],
-  },
-  {
-    title: 'Restorative Dental Services',
-    services: ['Dental fillings', 'Crowns and bridges', 'Dentures (complete and partial)', 'Root canal therapy', 'Inlays and onlays', 'Implant-supported restorations'],
+    title: 'Preventive & Restorative',
+    icon: dentalCareIcon,
+    services: ['Routine Check-ups', 'Teeth Cleaning', 'Fillings', 'Crowns & Bridges', 'Root Canal Therapy'],
   },
   {
     title: 'Cosmetic Dentistry',
-    services: ['Teeth whitening', 'Veneers', 'Dental bonding', 'Invisalign and clear aligners', 'Smile makeovers', 'Tooth reshaping and contouring'],
+    icon: dentalCareIcon, // Using a general icon, can be replaced
+    services: ['Teeth Whitening', 'Veneers', 'Dental Bonding', 'Invisalign', 'Smile Makeovers'],
+  },
+  {
+    title: 'Dental Implants',
+    icon: implantIcon,
+    services: ['Single Tooth Implants', 'Implant-Supported Bridges', 'All-on-4 Implants', 'Bone Grafting'],
   },
   {
     title: 'Specialized Services',
-    services: ['Dental implants', 'Bone grafting and sinus lift procedures', 'Peri-implantitis management', 'Periodontal treatments (gum disease)', 'Oral surgery'],
-  },
-  {
-    title: 'Orthodontics',
-    services: ['Traditional braces', 'Clear braces', 'Retainers', 'Early orthodontic treatments for children'],
-  },
-  {
-    title: 'Pediatric Dentistry',
-    services: ['Child dental check-ups', 'Preventive treatments for children', 'Space maintainers', 'Habit counseling', 'Emergency dental care for kids'],
-  },
-  {
-    title: 'Emergency Dental Care',
-    services: ['Toothache relief', 'Repairing chipped or broken teeth', 'Replacing knocked-out teeth', 'Emergency root canal therapy'],
+    icon: specializedTreatmentIcon,
+    services: ['Periodontal Treatments', 'Oral Surgery', 'Orthodontics', 'Pediatric Dentistry', 'Emergency Care'],
   },
   {
     title: 'Prosthodontics',
-    services: ['Full-mouth rehabilitation', 'Overdentures', 'Fixed hybrid prosthetics', 'Full-arch restorations'],
+    icon: specializedTreatmentIcon, // Using a general icon, can be replaced
+    services: ['Full-Mouth Rehabilitation', 'Overdentures', 'Fixed Hybrid Prosthetics', 'Full-Arch Restorations'],
   },
 ];
 
@@ -45,9 +41,12 @@ export const DentalServices = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {serviceCategories.map((category) => (
-            <div key={category.title} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <h2 className="text-2xl font-bold text-medicalBlue-dark mb-4">{category.title}</h2>
-              <ul className="space-y-2 text-gray-700 list-disc list-inside">
+            <div key={category.title} className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col">
+              <div className="flex items-center mb-4">
+                <img src={category.icon} alt={`${category.title} icon`} className="w-12 h-12 mr-4"/>
+                <h2 className="text-2xl font-bold text-medicalBlue-dark">{category.title}</h2>
+              </div>
+              <ul className="space-y-2 text-gray-700 list-disc list-inside flex-grow">
                 {category.services.map((service) => (
                   <li key={service}>{service}</li>
                 ))}

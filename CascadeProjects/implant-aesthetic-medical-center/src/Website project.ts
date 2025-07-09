@@ -86,7 +86,7 @@ export const DentalCarousel = () => {
           src={logo}
           alt="Clinic Logo"
           className="h-24 w-auto drop-shadow-lg"
-          style={{ filter: 'drop-shadow(0 4px 24px #FFD70088)' }}
+          style={{ filter: 'drop-shadow(0 4px 24pxrgba(255, 157, 0, 0.67))' }}
         />
       </div>
 

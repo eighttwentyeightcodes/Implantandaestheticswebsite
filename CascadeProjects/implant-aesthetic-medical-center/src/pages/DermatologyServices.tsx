@@ -4,6 +4,7 @@ import botox from '@/assets/botox.webp';
 import microneedling from '@/assets/microneedling.webp';
 import skinboosters from '@/assets/skinboosters.webp';
 import acnetreatment from '@/assets/acnetreatment.jpg';
+import dermaIcon from '@/assets/dermaicon.jpg';
 
 const dermaServices = [
   {
@@ -58,7 +59,10 @@ export const DermatologyServices = () => {
             <div key={service.title} className="bg-gray-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <img src={service.image} alt={service.alt} className="w-full h-64 object-cover" />
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-medicalBlue-dark mb-3">{service.title}</h3>
+                <div className="flex items-center mb-3">
+                  <img src={dermaIcon} alt="Dermatology Icon" className="w-10 h-10 mr-4"/>
+                  <h3 className="text-2xl font-bold text-medicalBlue-dark">{service.title}</h3>
+                </div>
                 <p className="text-gray-700 text-lg">{service.description}</p>
               </div>
             </div>

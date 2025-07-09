@@ -1,33 +1,51 @@
 import React from 'react';
-
-import implantProcedure from '@/assets/implant-procedure.jpg';
+import { Link } from 'react-router-dom';
 import radiantSkin from '@/assets/radiantskin.png';
-import expertCare from '@/assets/expertcare.JPG';
+import botox from '@/assets/botox.webp';
+import microneedling from '@/assets/microneedling.webp';
+import skinboosters from '@/assets/skinboosters.webp';
+import acnetreatment from '@/assets/acnetreatment.jpg';
 
 const blogPosts = [
   {
-    title: 'The Top 5 Benefits of Dental Implants',
-    date: 'July 9, 2024',
-    excerpt: 'Dental implants are the gold standard for replacing missing teeth. Discover the key benefits, from improved appearance to better oral health.',
-    image: implantProcedure,
-    alt: 'A dental implant model',
-    link: '#',
-  },
-  {
-    title: 'Your Guide to Achieving Radiant Skin This Season',
-    date: 'July 2, 2024',
-    excerpt: 'Unlock a glowing complexion with our expert tips on skincare routines, professional treatments, and lifestyle habits for healthy skin.',
+    title: 'Achieving Radiant Skin: A Comprehensive Guide',
+    date: 'July 8, 2024',
+    excerpt: 'Discover professional tips and treatments for achieving a healthy, radiant glow. From daily routines to advanced therapies, we cover it all.',
     image: radiantSkin,
     alt: 'A woman with radiant skin',
-    link: '#',
+    link: '#', // Placeholder link
   },
   {
-    title: 'Why Choosing an Experienced Practitioner Matters',
-    date: 'June 26, 2024',
-    excerpt: 'When it comes to aesthetic and dental procedures, the skill of your practitioner is crucial. Learn why experience is key to achieving safe and beautiful results.',
-    image: expertCare,
-    alt: 'A medical professional consulting with a patient',
-    link: '#',
+    title: 'Botox 101: Everything You Need to Know',
+    date: 'July 1, 2024',
+    excerpt: 'Thinking about Botox? Our experts break down the benefits, what to expect during the procedure, and how to maintain your results.',
+    image: botox,
+    alt: 'Botox treatment illustration',
+    link: '#', // Placeholder link
+  },
+  {
+    title: 'The Magic of Microneedling: Rejuvenate Your Skin',
+    date: 'June 25, 2024',
+    excerpt: 'Learn how microneedling can stimulate collagen, reduce scars, and improve your skin\'s overall texture and firmness.',
+    image: microneedling,
+    alt: 'Microneedling procedure',
+    link: '#', // Placeholder link
+  },
+  {
+    title: 'Skin Boosters: The Secret to Deep Hydration',
+    date: 'June 18, 2024',
+    excerpt: 'Explore how skin boosters work to hydrate your skin from the inside out, improving elasticity and luminosity for a youthful look.',
+    image: skinboosters,
+    alt: 'Glowing skin after skin booster treatment',
+    link: '#', // Placeholder link
+  },
+  {
+    title: 'A Personalized Approach to Acne Treatment',
+    date: 'June 10, 2024',
+    excerpt: 'Tired of acne breakouts? We discuss personalized treatment plans that target the root cause of acne for clear, healthy skin.',
+    image: acnetreatment,
+    alt: 'Clear skin after acne treatment',
+    link: '#', // Placeholder link
   },
 ];
 
@@ -36,21 +54,20 @@ export const Blog = () => {
     <div className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-medicalBlue-dark sm:text-5xl">From Our Blog</h1>
-          <p className="mt-4 text-xl text-gray-600">The latest news, tips, and insights from our experts.</p>
+          <h1 className="text-4xl font-extrabold text-medicalBlue-dark sm:text-5xl">Our Blog</h1>
+          <p className="mt-4 text-xl text-gray-600">Insights and advice on dental health and aesthetic treatments.</p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="space-y-12">
           {blogPosts.map((post) => (
-            <div key={post.title} className="bg-gray-50 rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300">
-              <img src={post.image} alt={post.alt} className="w-full h-56 object-cover" />
-              <div className="p-6 flex flex-col flex-grow">
+            <div key={post.title} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="md:col-span-1">
+                <img src={post.image} alt={post.alt} className="rounded-lg w-full h-full object-cover" />
+              </div>
+              <div className="md:col-span-2">
                 <p className="text-sm text-gray-500 mb-2">{post.date}</p>
-                <h3 className="text-xl font-bold text-medicalBlue-dark mb-3 flex-grow">{post.title}</h3>
+                <h2 className="text-2xl font-bold text-medicalBlue-dark mb-3">{post.title}</h2>
                 <p className="text-gray-700 mb-4">{post.excerpt}</p>
-                <a href={post.link} className="mt-auto font-semibold text-medicalBlue hover:text-medicalGold transition-colors">
-                  Read More &rarr;
-                </a>
+                <Link to={post.link} className="text-medicalBlue hover:text-medicalGold font-semibold">Read More &rarr;</Link>
               </div>
             </div>
           ))}

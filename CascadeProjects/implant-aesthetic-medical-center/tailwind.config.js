@@ -12,13 +12,13 @@ module.exports = {
           dark: '#3694C7',
         },
         medicalGold: {
-          DEFAULT: '#FFD700',
-          light: '#FFF8DC',
-          dark: '#FFC300',
+          DEFAULT: '#C69214', // A rich, classic gold
+          light: '#F5E8C7',   // A light, creamy gold for backgrounds
+          dark: '#A87900',    // A darker gold for hover states and accents
         },
       },
       boxShadow: {
-        medical: '0 4px 24px 0 rgba(110, 193, 228, 0.15)',
+        medical: '0 4px 24px 0 rgb(6, 174, 245)',
       },
     },
   },

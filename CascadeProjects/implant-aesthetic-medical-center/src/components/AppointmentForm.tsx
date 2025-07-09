@@ -16,16 +16,32 @@ export const AppointmentForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmissionStatus('submitting');
 
-    // Simulate backend submission
-    setTimeout(() => {
-      console.log('Form Data:', formData);
-      // TODO: Link to backend database
+    try {
+      const response = await fetch('http://localhost:3001/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      console.log('Server response:', result);
       setSubmissionStatus('success');
-    }, 2000);
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+      // Optionally, set an error state to show a message to the user
+      setSubmissionStatus('idle'); // Reset to allow another attempt
+      alert('Failed to book appointment. Please try again later.');
+    }
   };
 
   const resetForm = () => {
@@ -84,11 +100,21 @@ export const AppointmentForm = () => {
             required
             className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
           >
-            <option value="" disabled>--Please choose an option--</option>
-            <option value="dental-implant">Dental Implant</option>
-            <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
-            <option value="dermatology">Dermatology</option>
-            <option value="general-checkup">General Check-up</option>
+            <option value="" disabled>-- Select a Service --</option>
+            <optgroup label="Dental Services">
+              <option value="dental-checkup">Routine Dental Check-up</option>
+              <option value="dental-implant">Dental Implant Consultation</option>
+              <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
+              <option value="teeth-whitening">Teeth Whitening</option>
+              <option value="orthodontics">Orthodontics (Braces/Invisalign)</option>
+            </optgroup>
+            <optgroup label="Dermatology & Aesthetics">
+              <option value="dermatology-consultation">Dermatology Consultation</option>
+              <option value="botox-fillers">Botox & Fillers</option>
+              <option value="microneedling">Microneedling</option>
+              <option value="skin-boosters">Skin Boosters</option>
+              <option value="acne-treatment">Acne Treatment</option>
+            </optgroup>
           </select>
         </div>
         <div>

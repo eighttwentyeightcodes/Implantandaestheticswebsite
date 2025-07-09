@@ -1,4 +1,5 @@
 import React from 'react';
+import drAhmed from '@/assets/dr.ahmed.jpg';
 
 export const AboutUs = () => {
   return (
@@ -26,10 +27,7 @@ export const AboutUs = () => {
           <h2 className="text-3xl font-bold text-medicalBlue-dark mb-6 text-center">Message from the CEO</h2>
           <div className="md:flex md:items-center md:space-x-8">
             <div className="md:w-1/3 text-center">
-              {/* Placeholder for CEO image */}
-              <div className="w-48 h-48 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-gray-500">Dr. Ahmed</span>
-              </div>
+              <img src={drAhmed} alt="Dr. Ahmed Elbanna" className="w-48 h-48 rounded-full mx-auto mb-4 object-cover shadow-lg" />
               <h3 className="text-2xl font-bold text-medicalGold">Dr. Ahmed Elbanna</h3>
               <p className="text-gray-600">CEO & Medical Director</p>
             </div>
