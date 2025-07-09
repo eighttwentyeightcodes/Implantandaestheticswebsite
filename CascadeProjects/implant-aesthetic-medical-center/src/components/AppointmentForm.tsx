@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import { CheckCircle, Loader2, CalendarPlus } from 'lucide-react';
 
 export const AppointmentForm = () => {
   const [formData, setFormData] = useState({
@@ -49,100 +49,115 @@ export const AppointmentForm = () => {
     setSubmissionStatus('idle');
   };
 
-  if (submissionStatus === 'success') {
+    if (submissionStatus === 'success') {
     return (
-      <div className="w-full max-w-2xl mx-auto my-12 p-8 bg-medicalGold-light rounded-lg shadow-medical border border-medicalGold text-center">
-        <CheckCircle className="w-16 h-16 mx-auto text-green-500 mb-4" />
-        <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4">Appointment Requested!</h2>
-        <p className="text-gray-700 text-lg mb-6">Thank you, {formData.name}. We have received your request and will call you at {formData.phone} shortly to confirm your appointment.</p>
-        <Button onClick={resetForm} className="bg-medicalBlue hover:bg-medicalBlue-dark text-white font-bold py-2 px-6 rounded-lg">
-          Book Another Appointment
-        </Button>
+      <div className="w-full max-w-4xl mx-auto my-12 bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="md:grid md:grid-cols-3">
+          <div className="bg-medicalBlue-dark p-8 text-white flex flex-col justify-center items-center md:rounded-l-lg">
+            <CheckCircle className="w-24 h-24 text-green-400 mb-4" />
+            <h2 className="text-2xl font-bold text-center">Request Sent!</h2>
+          </div>
+          <div className="p-8 md:col-span-2 flex flex-col justify-center items-center text-center">
+            <h3 className="text-2xl font-bold text-medicalBlue-dark mb-4">Thank You, {formData.name}!</h3>
+            <p className="text-gray-700 text-lg mb-6">We have received your request and will call you at <strong>{formData.phone}</strong> shortly to confirm your appointment.</p>
+            <Button onClick={resetForm} className="bg-medicalGold hover:bg-medicalGold-dark text-white font-bold py-2 px-6 rounded-lg">
+              Book Another Appointment
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto my-12 p-8 bg-medicalGold-light rounded-lg shadow-medical border border-medicalGold">
-      <h2 className="text-3xl font-bold text-center text-medicalBlue-dark mb-6">Book an Appointment</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-medicalBlue-dark">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
-          />
+    <div className="w-full max-w-4xl mx-auto my-12 bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="md:grid md:grid-cols-3">
+        <div className="bg-medicalBlue-dark p-8 text-white flex flex-col justify-center items-center md:rounded-l-lg">
+          <CalendarPlus className="w-24 h-24 text-medicalGold mb-4" />
+          <h2 className="text-2xl font-bold text-center">Book an Appointment</h2>
+          <p className="text-center mt-2 text-medicalBlue-light">Schedule your visit with us today!</p>
         </div>
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-medicalBlue-dark">Phone Number</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
-          />
+        <div className="p-8 md:col-span-2">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-medicalBlue-dark">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
+              />
+            </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-medicalBlue-dark">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
+              />
+            </div>
+            <div>
+              <label htmlFor="procedure" className="block text-sm font-medium text-medicalBlue-dark">Select Procedure</label>
+              <select
+                id="procedure"
+                name="procedure"
+                value={formData.procedure}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
+              >
+                <option value="" disabled>-- Select a Service --</option>
+                <optgroup label="Dental Services">
+                  <option value="dental-checkup">Routine Dental Check-up</option>
+                  <option value="dental-implant">Dental Implant Consultation</option>
+                  <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
+                  <option value="teeth-whitening">Teeth Whitening</option>
+                  <option value="orthodontics">Orthodontics (Braces/Invisalign)</option>
+                </optgroup>
+                <optgroup label="Dermatology & Aesthetics">
+                  <option value="dermatology-consultation">Dermatology Consultation</option>
+                  <option value="botox-fillers">Botox & Fillers</option>
+                  <option value="microneedling">Microneedling</option>
+                  <option value="skin-boosters">Skin Boosters</option>
+                  <option value="acne-treatment">Acne Treatment</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="date" className="block text-sm font-medium text-medicalBlue-dark">Preferred Date</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+                className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
+              />
+            </div>
+            <div className="text-right pt-2">
+                <Button 
+                  type="submit" 
+                  className="bg-medicalGold hover:bg-medicalGold-dark text-white font-bold py-2 px-6 rounded-lg shadow-md transform transition-transform hover:scale-105 flex items-center justify-center ml-auto"
+                  disabled={submissionStatus === 'submitting'}
+                >
+                  {submissionStatus === 'submitting' ? (
+                    <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Requesting...</>
+                  ) : (
+                    'Request Appointment'
+                  )}
+                </Button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="procedure" className="block text-sm font-medium text-medicalBlue-dark">Select Procedure</label>
-          <select
-            id="procedure"
-            name="procedure"
-            value={formData.procedure}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
-          >
-            <option value="" disabled>-- Select a Service --</option>
-            <optgroup label="Dental Services">
-              <option value="dental-checkup">Routine Dental Check-up</option>
-              <option value="dental-implant">Dental Implant Consultation</option>
-              <option value="cosmetic-dentistry">Cosmetic Dentistry</option>
-              <option value="teeth-whitening">Teeth Whitening</option>
-              <option value="orthodontics">Orthodontics (Braces/Invisalign)</option>
-            </optgroup>
-            <optgroup label="Dermatology & Aesthetics">
-              <option value="dermatology-consultation">Dermatology Consultation</option>
-              <option value="botox-fillers">Botox & Fillers</option>
-              <option value="microneedling">Microneedling</option>
-              <option value="skin-boosters">Skin Boosters</option>
-              <option value="acne-treatment">Acne Treatment</option>
-            </optgroup>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium text-medicalBlue-dark">Preferred Date</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-medicalBlue focus:border-medicalBlue"
-          />
-        </div>
-        <div className="text-center">
-            <Button 
-              type="submit" 
-              className="w-full bg-medicalBlue hover:bg-medicalBlue-dark text-white font-bold py-3 px-4 rounded-lg shadow-lg transform transition-transform hover:scale-105 flex items-center justify-center"
-              disabled={submissionStatus === 'submitting'}
-            >
-              {submissionStatus === 'submitting' ? (
-                <><Loader2 className="mr-2 h-5 w-5 animate-spin" /> Requesting...</>
-              ) : (
-                'Request Appointment'
-              )}
-            </Button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

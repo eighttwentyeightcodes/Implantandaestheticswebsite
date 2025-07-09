@@ -3,18 +3,18 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Jessica M.',
-    quote: 'The team at Implant & Aesthetic Medical Center is phenomenal. My dental implant procedure was painless, and the results are better than I ever imagined. Highly recommend!',
+    name: 'Faalaq Ahmedali',
+    quote: 'I had a dental implant done by Dr. Ahmed and couldn’t be happier with the experience. He explained the process clearly, made me feel at ease, and the results look and feel completely natural. The clinic is clean, calming, and the staff is very friendly. Highly recommend Dr. Ahmed and his team for anyone considering implants!',
     stars: 5,
   },
   {
-    name: 'David L.',
-    quote: 'I had a series of dermatology treatments, and my skin has never looked better. The staff is professional, knowledgeable, and truly cares about their patients.',
+    name: 'Ahmed Allawy',
+    quote: 'I highly recommend Implant & Aesthetic medical center. They professionally and effectively treated all my teeth problems. I had a wisdom tooth surgical extraction, a root canal treatment, polishing, and filling for another tooth. All operations went really well AlhamduLELLAH. The whole team was very supportive and helpful throughout the treatment time and Dr. Ahmed took all the time to make sure I understand my diagnosis and my operations well ahead of it. I’d highly recommend their services.',
     stars: 5,
   },
   {
-    name: 'Samantha K.',
-    quote: 'From the moment I walked in, I felt at ease. The clinic is beautiful, and the level of care is exceptional. I\'m so happy with my smile makeover!',
+    name: 'Amal Radwan',
+    quote: 'Best experience with both implant and Aesthetic for both of my daughters. The laser sessions in the Aesthetic clinic have been extremely easy, smooth, painless and reasonably priced. The doctor is very attentive and proactive. Thank you and much appreciation for following up. We are so happy with the services.',
     stars: 5,
   },
 ];

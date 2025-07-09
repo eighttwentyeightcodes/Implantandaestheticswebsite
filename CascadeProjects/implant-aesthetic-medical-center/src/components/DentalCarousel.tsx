@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import implantProcedure from "./implant-procedure.jpg";
-import dermaClinic from "./derma-clinic.jpg";
-import stateOfTheArtFacility from "./stateoftheartfacility.jpg";
+import implantProcedure from "@/assets/implantprocedure.jpg";
+import dermaClinic from "@/assets/derma.jpg";
+import expertCare from "@/assets/expertcare.JPG";
 import logo from "@/assets/logo.png";
 
 const dentalImages = [
@@ -15,18 +15,18 @@ const dentalImages = [
     buttonLink: "/dental-implants"
   },
   {
+    src: expertCare,
+    alt: "A dentist providing expert care to a patient",
+    title: "Excellence in Every Detail",
+    catchyPhrase: "Discover Our Commitment to Expert Care",
+    buttonLink: "/about-us"
+  },
+  {
     src: dermaClinic,
     alt: "Derma haven",
     title: "Unveil Your Radiant Skin",
     catchyPhrase: "Aesthetic Dermatology for a Flawless You",
     buttonLink: "/dermatology-services"
-  },
-  {
-    src: stateOfTheArtFacility,
-    alt: "Latest technology and procedures",
-    title: "Excellence in Every Detail",
-    catchyPhrase: "Discover Our State-of-the-Art Facilities",
-    buttonLink: "/about-us"
   }
 ];
 
@@ -56,7 +56,7 @@ export const DentalCarousel = () => {
   };
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden bg-medicalBlue-light">
+    <div className="relative w-full h-[500px] overflow-hidden">
 
       {/* Main image display */}
       <div className="relative h-full">
@@ -73,9 +73,9 @@ export const DentalCarousel = () => {
               alt={image.alt}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
             <div className="absolute bottom-8 left-8 text-white pr-8">
-              <h3 className="text-4xl font-bold mb-2">{image.title}</h3>
+              <h3 className="text-4xl font-bold mb-2 text-white">{image.title}</h3>
               <p className="text-2xl font-semibold bg-gradient-to-r from-medicalGold to-amber-300 text-transparent bg-clip-text mb-4">
                 {image.catchyPhrase}
               </p>

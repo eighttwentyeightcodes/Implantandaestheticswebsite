@@ -1,6 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { ContactFooter } from './components/ContactFooter';
+import { DentalCarousel } from './components/DentalCarousel';
+import { PageLayout } from './components/PageLayout';
 import { Home } from './pages/Home';
 import { DentalImplants } from './pages/DentalImplants';
 import { DentalServices } from './pages/DentalServices';
@@ -11,12 +13,16 @@ import { Blog } from './pages/Blog';
 import { FAQ } from './pages/FAQ';
 import { ContactUs } from './pages/ContactUs';
 
-function App() {
+const AppContent = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
-        <Navbar />
-        <div className="flex-grow">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Navbar />
+      {isHomePage && <DentalCarousel />}
+      <main className="flex-grow">
+        <PageLayout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dental-implants" element={<DentalImplants />} />
@@ -28,9 +34,17 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact-us" element={<ContactUs />} />
           </Routes>
-        </div>
-        <ContactFooter />
-      </div>
+        </PageLayout>
+      </main>
+      <ContactFooter />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
