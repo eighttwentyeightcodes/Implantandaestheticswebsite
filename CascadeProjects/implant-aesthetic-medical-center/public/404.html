@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Store the full path that led to the 404 page
+      const path = window.location.pathname;
+      
+      // If the path is not the root, redirect to the root with the path in the hash
+      // This allows HashRouter to pick it up.
+      if (path && path !== '/') {
+        window.location.href = '/Implantandaestheticswebsite/#' + path;
+      }
+    </script>
+  </head>
+  <body>
+    <p>If you are not redirected automatically, follow this <a href="/Implantandaestheticswebsite/">link to the homepage</a>.</p>
+  </body>
+</html>
