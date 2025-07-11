@@ -4,17 +4,13 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // Store the full path that led to the 404 page
-      const path = window.location.pathname;
-      
-      // If the path is not the root, redirect to the root with the path in the hash
-      // This allows HashRouter to pick it up.
-      if (path && path !== '/') {
-        window.location.href = '/Implantandaestheticswebsite/#' + path;
-      }
+      // Use sessionStorage to store the path, as it persists across page loads.
+      sessionStorage.redirect = location.href;
     </script>
+    <!-- Use a meta refresh to redirect to the root of the site. -->
+    <meta http-equiv="refresh" content="0;URL='/implant_and_aesthetic_website/'">
   </head>
   <body>
-    <p>If you are not redirected automatically, follow this <a href="/Implantandaestheticswebsite/">link to the homepage</a>.</p>
+    <p>If you are not redirected automatically, follow this <a href="/implant_and_aesthetic_website/">link to the homepage</a>.</p>
   </body>
 </html>
