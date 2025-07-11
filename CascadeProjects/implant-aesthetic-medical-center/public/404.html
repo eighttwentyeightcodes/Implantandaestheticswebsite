@@ -4,13 +4,23 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      // Use sessionStorage to store the path, as it persists across page loads.
-      sessionStorage.redirect = location.href;
+      // Get the path from the URL, relative to the repository root.
+      const repoName = '/implant_and_aesthetic_website';
+      const path = window.location.pathname;
+      const relativePath = path.startsWith(repoName) ? path.substring(repoName.length) : path;
+
+      // Construct the new URL with the path in the hash.
+      const newUrl = repoName + '/#' + relativePath;
+
+      // Redirect to the new URL.
+      window.location.href = newUrl;
     </script>
-    <!-- Use a meta refresh to redirect to the root of the site. -->
-    <meta http-equiv="refresh" content="0;URL='/implant_and_aesthetic_website/'">
   </head>
   <body>
-    <p>If you are not redirected automatically, follow this <a href="/implant_and_aesthetic_website/">link to the homepage</a>.</p>
+    <p>If you are not redirected automatically, follow this <a id="redirect-link" href="/implant_and_aesthetic_website/">link to the homepage</a>.</p>
+    <script>
+      // Update the link for the user as a fallback.
+      document.getElementById('redirect-link').href = newUrl;
+    </script>
   </body>
 </html>
