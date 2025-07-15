@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { ContactFooter } from './components/ContactFooter';
@@ -16,6 +17,10 @@ import { ContactUs } from './pages/ContactUs';
 const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
