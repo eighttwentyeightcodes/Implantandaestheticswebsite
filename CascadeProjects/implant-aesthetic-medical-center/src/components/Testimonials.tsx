@@ -1,4 +1,6 @@
 import React from 'react';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 import { Star } from 'lucide-react';
 
 const testimonials = [
@@ -38,12 +40,14 @@ export const Testimonials = () => {
           <p className="mt-4 text-lg text-gray-600">Real stories from our satisfied patients.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.name} className="bg-medicalBlue-light p-8 rounded-lg shadow-md flex flex-col">
-              <div className="flex mb-4">{renderStars(testimonial.stars)}</div>
-              <p className="text-gray-700 mb-6 flex-grow">"{testimonial.quote}"</p>
-              <p className="font-bold text-medicalBlue-dark text-right">- {testimonial.name}</p>
-            </div>
+          {testimonials.map((testimonial, idx) => (
+            <AnimatedOnScroll key={testimonial.name} variants={bounceFadeVariants} delay={idx * 0.1}>
+              <div className="bg-medicalBlue-light p-8 rounded-lg shadow-md flex flex-col">
+                <div className="flex mb-4">{renderStars(testimonial.stars)}</div>
+                <p className="text-gray-700 mb-6 flex-grow">"{testimonial.quote}"</p>
+                <p className="font-bold text-medicalBlue-dark text-right">- {testimonial.name}</p>
+              </div>
+            </AnimatedOnScroll>
           ))}
         </div>
         <div className="text-center mt-12">

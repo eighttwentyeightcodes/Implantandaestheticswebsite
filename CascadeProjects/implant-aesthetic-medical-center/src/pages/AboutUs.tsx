@@ -1,5 +1,7 @@
 import React from 'react';
 import drAhmed from '@/assets/dr.ahmed.jpg';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 
 export const AboutUs = () => {
   return (
@@ -40,47 +42,49 @@ export const AboutUs = () => {
               </p>
             </div>
           </div>
-        </div>
 
-        {/* Philosophy and Values Section */}
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4">Our Corporate Philosophy</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-2xl font-semibold text-medicalGold">Mission</h3>
-                <p className="text-lg text-gray-700">To deliver exceptional medical and aesthetic solutions tailored to the unique needs of our patients, ensuring quality, safety, and satisfaction at every step.</p>
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-medicalGold">Vision</h3>
-                <p className="text-lg text-gray-700">To be a leading healthcare provider in dental services, recognized for excellence, innovation, and compassionate care.</p>
+          {/* Philosophy and Values Section */}
+          <div className="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+              <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4">Our Corporate Philosophy</h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-2xl font-semibold text-medicalGold">Mission</h3>
+                  <p className="text-lg text-gray-700">To deliver exceptional medical and aesthetic solutions tailored to the unique needs of our patients, ensuring quality, safety, and satisfaction at every step.</p>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-medicalGold">Vision</h3>
+                  <p className="text-lg text-gray-700">To be a leading healthcare provider in dental services, recognized for excellence, innovation, and compassionate care.</p>
+                </div>
               </div>
             </div>
+            <div>
+              <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4">Our Core Values</h2>
+              <ul className="space-y-3 text-lg text-gray-700">
+                <li className="font-semibold"><strong>Excellence:</strong> We are committed to the highest standards of clinical care.</li>
+                <li className="font-semibold"><strong>Patient-Centered Care:</strong> Your needs, comfort, and satisfaction are at the heart of our practice.</li>
+                <li className="font-semibold"><strong>Comfort & Compassion:</strong> We create a warm, comfortable environment where patients are treated with respect and empathy.</li>
+                <li className="font-semibold"><strong>Integrity:</strong> We operate with honesty, transparency, and professionalism.</li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4">Our Core Values</h2>
-            <ul className="space-y-3 text-lg text-gray-700">
-              <li className="font-semibold"><strong>Excellence:</strong> We are committed to the highest standards of clinical care.</li>
-              <li className="font-semibold"><strong>Patient-Centered Care:</strong> Your needs, comfort, and satisfaction are at the heart of our practice.</li>
-              <li className="font-semibold"><strong>Comfort & Compassion:</strong> We create a warm, comfortable environment where patients are treated with respect and empathy.</li>
-              <li className="font-semibold"><strong>Integrity:</strong> We operate with honesty, transparency, and professionalism.</li>
-            </ul>
-          </div>
-        </div>
 
-        {/* Why Choose Us Section */}
-        <div className="bg-medicalBlue-extralight p-8 rounded-lg">
-          <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4 text-center">Why Choose Us</h2>
-          <ul className="space-y-4 text-lg text-gray-700 list-disc list-inside">
-            <li><strong>Experienced Professionals:</strong> Our team consists of skilled and qualified dentists and aesthetic practitioners.</li>
-            <li><strong>Personalized Care:</strong> We create customized treatment plans that deliver the best results.</li>
-            <li><strong>State-of-the-Art Technology:</strong> We use advanced equipment to ensure safety, comfort, and optimal outcomes.</li>
-            <li><strong>Comfortable Environment:</strong> Our clinic is designed to provide a relaxing and stress-free experience.</li>
-            <li><strong>Affordable Options:</strong> We offer competitive pricing and flexible payment plans.</li>
-          </ul>
+          {/* Why Choose Us Section */}
+          <AnimatedOnScroll variants={bounceFadeVariants} delay={0.2}>
+            <div className="bg-medicalBlue-extralight p-8 rounded-lg">
+              <h2 className="text-3xl font-bold text-medicalBlue-dark mb-4 text-center">Why Choose Us</h2>
+              <ul className="space-y-4 text-lg text-gray-700 list-disc list-inside">
+                <li><strong>Experienced Professionals:</strong> Our team consists of skilled and qualified dentists and aesthetic practitioners.</li>
+                <li><strong>Personalized Care:</strong> We create customized treatment plans that deliver the best results.</li>
+                <li><strong>State-of-the-Art Technology:</strong> We use advanced equipment to ensure safety, comfort, and optimal outcomes.</li>
+                <li><strong>Comfortable Environment:</strong> Our clinic is designed to provide a relaxing and stress-free experience.</li>
+                <li><strong>Affordable Options:</strong> We offer competitive pricing and flexible payment plans.</li>
+              </ul>
+            </div>
+          </AnimatedOnScroll>
         </div>
-
       </div>
     </div>
   );
 };
+

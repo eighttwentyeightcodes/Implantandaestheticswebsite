@@ -5,16 +5,17 @@ import { ClinicSummary } from '../components/ClinicSummary';
 import { ServicesSection } from '../components/ServicesSection';
 import { Testimonials } from '../components/Testimonials';
 import { NewsSection } from '../components/NewsSection';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 
 export const Home = () => {
   return (
     <main>
-
-      <ClinicSummary />
-      <ServicesSection />
-      <AppointmentForm />
-      <Testimonials />
-      <NewsSection />
+      <AnimatedOnScroll variants={bounceFadeVariants}><ClinicSummary /></AnimatedOnScroll>
+      <AnimatedOnScroll variants={bounceFadeVariants} delay={0.1}><ServicesSection /></AnimatedOnScroll>
+      <AnimatedOnScroll variants={bounceFadeVariants} delay={0.2}><AppointmentForm /></AnimatedOnScroll>
+      <AnimatedOnScroll variants={bounceFadeVariants} delay={0.3}><Testimonials /></AnimatedOnScroll>
+      <AnimatedOnScroll variants={bounceFadeVariants} delay={0.4}><NewsSection /></AnimatedOnScroll>
     </main>
   );
 };

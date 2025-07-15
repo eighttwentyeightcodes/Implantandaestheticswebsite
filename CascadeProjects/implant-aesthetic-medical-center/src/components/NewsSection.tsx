@@ -28,6 +28,9 @@ const blogPosts = [
   },
 ];
 
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
+
 export const NewsSection = () => {
   return (
     <div className="w-full py-12 bg-medicalBlue-light">
@@ -35,15 +38,19 @@ export const NewsSection = () => {
         <h2 className="text-3xl font-bold text-center text-medicalBlue-dark mb-10">Latest News & Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
-              <img src={post.image} alt={post.title} className="w-full h-48 object-cover"/>
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold text-medicalBlue-dark mb-2">{post.title}</h3>
-                <p className="text-sm text-gray-500 mb-4">{post.date}</p>
-                <p className="text-gray-600 mb-4 flex-grow">{post.excerpt}</p>
-                <Link to={post.link} className="text-medicalBlue hover:text-medicalBlue-dark font-semibold self-start">Read More &rarr;</Link>
+            <AnimatedOnScroll key={index} variants={bounceFadeVariants} delay={index * 0.1}>
+              <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <AnimatedOnScroll variants={bounceFadeVariants} delay={0.05}>
+                  <img src={post.image} alt={post.title} className="w-full h-48 object-cover"/>
+                </AnimatedOnScroll>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold text-medicalBlue-dark mb-2">{post.title}</h3>
+                  <p className="text-sm text-gray-500 mb-4">{post.date}</p>
+                  <p className="text-gray-600 mb-4 flex-grow">{post.excerpt}</p>
+                  <Link to={post.link} className="text-medicalBlue hover:text-medicalBlue-dark font-semibold self-start">Read More &rarr;</Link>
+                </div>
               </div>
-            </div>
+            </AnimatedOnScroll>
           ))}
         </div>
       </div>

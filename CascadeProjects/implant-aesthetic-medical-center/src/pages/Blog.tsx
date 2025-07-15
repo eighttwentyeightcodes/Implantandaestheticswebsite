@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 import radiantSkin from '@/assets/radiantskin.png';
 import botox from '@/assets/botox.webp';
 import microneedling from '@/assets/microneedling.webp';
@@ -58,18 +60,20 @@ export const Blog = () => {
           <p className="mt-4 text-xl text-gray-600">Insights and advice on dental health and aesthetic treatments.</p>
         </div>
         <div className="space-y-12">
-          {blogPosts.map((post) => (
-            <div key={post.title} className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="md:col-span-1">
-                <img src={post.image} alt={post.alt} className="rounded-lg w-full h-full object-cover" />
+          {blogPosts.map((post, idx) => (
+            <AnimatedOnScroll key={post.title} variants={bounceFadeVariants} delay={idx * 0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-medicalBlue-extralight rounded-lg shadow-lg p-8">
+                <AnimatedOnScroll variants={bounceFadeVariants} delay={0.05}>
+                  <img src={post.image} alt={post.title} className="w-full h-56 object-cover rounded-md md:col-span-1 mb-6 md:mb-0" />
+                </AnimatedOnScroll>
+                <div className="md:col-span-2">
+                  <p className="text-sm text-gray-500 mb-2">{post.date}</p>
+                  <h2 className="text-2xl font-bold text-medicalBlue-dark mb-3">{post.title}</h2>
+                  <p className="text-gray-700 mb-4">{post.excerpt}</p>
+                  <Link to={post.link} className="text-medicalBlue hover:text-medicalGold font-semibold">Read More &rarr;</Link>
+                </div>
               </div>
-              <div className="md:col-span-2">
-                <p className="text-sm text-gray-500 mb-2">{post.date}</p>
-                <h2 className="text-2xl font-bold text-medicalBlue-dark mb-3">{post.title}</h2>
-                <p className="text-gray-700 mb-4">{post.excerpt}</p>
-                <Link to={post.link} className="text-medicalBlue hover:text-medicalGold font-semibold">Read More &rarr;</Link>
-              </div>
-            </div>
+            </AnimatedOnScroll>
           ))}
         </div>
       </div>

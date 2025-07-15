@@ -1,4 +1,6 @@
 import React from 'react';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
@@ -65,15 +67,17 @@ export const FAQ = () => {
           <p className="mt-4 text-xl text-gray-600">Your questions, answered.</p>
         </div>
         <div className="max-w-4xl mx-auto">
-          {faqData.map((categoryItem) => (
-            <div key={categoryItem.category} className="mb-10">
-              <h2 className="text-3xl font-bold text-medicalBlue mb-6">{categoryItem.category}</h2>
-              <div className="space-y-2">
-                {categoryItem.questions.map((item) => (
-                  <FaqItem key={item.q} q={item.q} a={item.a} />
-                ))}
+          {faqData.map((categoryItem, idx) => (
+            <AnimatedOnScroll key={categoryItem.category} variants={bounceFadeVariants} delay={idx * 0.1}>
+              <div className="mb-10">
+                <h2 className="text-3xl font-bold text-medicalBlue mb-6">{categoryItem.category}</h2>
+                <div className="space-y-2">
+                  {categoryItem.questions.map((item) => (
+                    <FaqItem key={item.q} q={item.q} a={item.a} />
+                  ))}
+                </div>
               </div>
-            </div>
+            </AnimatedOnScroll>
           ))}
         </div>
       </div>

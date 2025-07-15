@@ -1,4 +1,6 @@
 import React from 'react';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 
 import { FileText, HeartPulse, DollarSign, Download } from 'lucide-react';
 
@@ -45,22 +47,26 @@ export const PatientResources = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {resources.map((resource) => (
-            <div key={resource.title} className="bg-gray-50 p-8 rounded-lg shadow-md text-center">
-              <resource.icon className="w-12 h-12 mx-auto text-medicalBlue mb-4" />
-              <h2 className="text-2xl font-bold text-medicalBlue-dark mb-3">{resource.title}</h2>
-              <p className="text-gray-600 mb-6">{resource.description}</p>
-              <ul className="space-y-3 text-left">
-                {resource.items.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.link} className="flex items-center text-medicalBlue hover:text-medicalGold transition-colors font-semibold">
-                      <Download className="w-4 h-4 mr-3 flex-shrink-0" />
-                      <span>{item.name}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {resources.map((resource, idx) => (
+            <AnimatedOnScroll key={resource.title} variants={bounceFadeVariants} delay={idx * 0.1}>
+              <div className="bg-gray-50 rounded-lg shadow-md p-8 flex flex-col items-center">
+                <AnimatedOnScroll variants={bounceFadeVariants} delay={0.05}>
+                  <resource.icon className="w-12 h-12 mx-auto text-medicalBlue mb-4" />
+                </AnimatedOnScroll>
+                <h2 className="text-2xl font-bold text-medicalBlue-dark mb-3">{resource.title}</h2>
+                <p className="text-gray-600 mb-6">{resource.description}</p>
+                <ul className="space-y-3 text-left">
+                  {resource.items.map((item) => (
+                    <li key={item.name}>
+                      <a href={item.link} className="flex items-center text-medicalBlue hover:text-medicalGold transition-colors font-semibold">
+                        <Download className="w-4 h-4 mr-3 flex-shrink-0" />
+                        <span>{item.name}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AnimatedOnScroll>
           ))}
         </div>
       </div>

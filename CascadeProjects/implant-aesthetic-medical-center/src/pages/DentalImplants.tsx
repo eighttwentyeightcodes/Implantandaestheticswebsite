@@ -1,5 +1,7 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
+import AnimatedOnScroll from '@/components/AnimatedOnScroll';
+import bounceFadeVariants from '@/components/bounceFadeVariants';
 
 import implantConsultation from '../assets/implantconsultation.jpg';
 import implantPlacement from '../assets/implantplacement.jpg';
@@ -28,16 +30,18 @@ export const DentalImplants = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div 
-        className="relative bg-cover bg-center py-24"
-        style={{ backgroundImage: `url(${smileFinal})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-medicalBlue-dark/80 to-medicalBlue/60"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">Restore Your Smile with Dental Implants</h1>
-          <p className="mt-4 text-xl sm:text-2xl">The most advanced and permanent solution for missing teeth.</p>
+      <AnimatedOnScroll variants={bounceFadeVariants}>
+        <div 
+          className="relative bg-cover bg-center py-24"
+          style={{ backgroundImage: `url(${smileFinal})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-medicalBlue-dark/80 to-medicalBlue/60"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">Restore Your Smile with Dental Implants</h1>
+            <p className="mt-4 text-xl sm:text-2xl">The most advanced and permanent solution for missing teeth.</p>
+          </div>
         </div>
-      </div>
+      </AnimatedOnScroll>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
